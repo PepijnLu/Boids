@@ -12,7 +12,6 @@ public class BoidManager : MonoBehaviour
     [SerializeField] private float minimumBoidDistance = 0.1f;
     [SerializeField] private int group1Size;
     [SerializeField] private Boid fishPrefab;
-    [SerializeField] private Vector3 currentGoal = new Vector3(15, 15, 15);
     [SerializeField] private Vector3 minSpawnBounds = new Vector3(-5, -5, -5);
     [SerializeField] private Vector3 maxSpawnBounds = new Vector3(5, 5, 5);
     [SerializeField] private Vector3 minMoveBounds = new Vector3(-25, -25, -25);
@@ -55,19 +54,16 @@ public class BoidManager : MonoBehaviour
             v1 = Rule1(_boid);
             v2 = Rule2(_boid);
             v3 = Rule3(_boid);
-            v4 = Rule4(_boid, currentGoal);
-            v5 = Rule5(_boid);
+            v4 = Rule4(_boid);
 
-            _boid.SetVelocity(v1, v2, v3, v4, v5);
+            _boid.SetVelocity(v1, v2, v3, v4);
             _boid.MoveBoid();
         }
     }
 
+    //Make the boids move as a group
     Vector3 Rule1(Boid boid)
     {
-        //if(group.IndexOf(boid) == 0) return new Vector3(0, 0, 0);
-
-        //Either initialize as 0 or the position of the boid?
         Vector3 percievedCentreOfMass = new Vector3(0, 0, 0);
 
         foreach(Boid _boid in group)
@@ -81,10 +77,10 @@ public class BoidManager : MonoBehaviour
         Debug.Log("Perceived CoM: " + percievedCentreOfMass + "boid pos: " + boid.transform.position); 
         return (percievedCentreOfMass - boid.transform.position) * moveToCentreMultiplier;
     }
+
+    //Seperate the boids from eachother
     Vector3 Rule2(Boid boid)
     {
-        //if(group.IndexOf(boid) == 0) return new Vector3(0, 0, 0);
-
         Vector3 displacement = new Vector3(0, 0, 0);
         foreach(Boid _boid in group)
         {
@@ -96,12 +92,12 @@ public class BoidManager : MonoBehaviour
                 }
             }
         }
-        // Debug.Log("Displacement: " + displacement);
         return displacement;
     }
+
+    //Match velocity of other boids
     Vector3 Rule3(Boid boid)
     {
-        //if(group.IndexOf(boid) == 0) return new Vector3(0, 0, 0);
 
         Vector3 percievedVelocity = new Vector3(0, 0, 0);
         foreach(Boid _boid in group)
@@ -117,19 +113,10 @@ public class BoidManager : MonoBehaviour
         return percievedVelocity * matchVelocityMultiplier;
     }
 
-    Vector3 Rule4(Boid boid, Vector3 place)
-    {
-        //if(group.IndexOf(boid) == 0) return new Vector3(0, 0, 0);
-
-        Debug.Log("Move to place multiplier: " + (place - boid.transform.position) * moveToPlaceMultiplier);
-        return (place - boid.transform.position) * moveToPlaceMultiplier;
-    }
-
-    Vector3 Rule5(Boid boid)
+    //Make sure the boids stay within bounds
+    Vector3 Rule4(Boid boid)
     {
         Vector3 boundsCorrection = new Vector3(0, 0, 0);
-
-        //if(group.IndexOf(boid) == 0) return new Vector3(0, 0, 0);
 
         if(boid.transform.position.x < minMoveBounds.x) boundsCorrection.x = 10;
 		else if (boid.transform.position.x > maxMoveBounds.x) boundsCorrection.x = -10;

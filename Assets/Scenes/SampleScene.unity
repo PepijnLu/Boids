@@ -152,13 +152,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveToCentreMultiplier: 0.01
-  moveToPlaceMultiplier: 0
+  moveToPlaceMultiplier: 0.01
   matchVelocityMultiplier: 0.125
   minimumBoidDistance: 0.5
-  group1Size: 20
+  group1Size: 25
   fishPrefab: {fileID: 6863371939191001734, guid: ca3ade48739b7a543a390e67bca6b383,
     type: 3}
-  currentGoal: {x: 15, y: 15, z: 15}
   minSpawnBounds: {x: -15, y: -15, z: -15}
   maxSpawnBounds: {x: 15, y: 15, z: 15}
   minMoveBounds: {x: -50, y: -50, z: -50}
@@ -264,13 +263,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031314604, y: 0.1781687, z: -0.045998257, w: 0.98242533}
-  m_LocalPosition: {x: 0.00000017635354, y: 6, z: -7.19}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.0999999, z: -15.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 39.814, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: -53.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -476,7 +475,7 @@ Transform:
   m_GameObject: {fileID: 832575517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -53.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
